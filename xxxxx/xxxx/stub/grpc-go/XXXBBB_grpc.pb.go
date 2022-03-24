@@ -18,7 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type XXXBBBClient interface {
-	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	SayHello(ctx context.Context, in *HelloRequestt, opts ...grpc.CallOption) (*HelloReply, error)
 }
 
 type xXXBBBClient struct {
@@ -29,7 +29,7 @@ func NewXXXBBBClient(cc grpc.ClientConnInterface) XXXBBBClient {
 	return &xXXBBBClient{cc}
 }
 
-func (c *xXXBBBClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *xXXBBBClient) SayHello(ctx context.Context, in *HelloRequestt, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
 	err := c.cc.Invoke(ctx, "/xxxxx.xxxx.XXXBBB/SayHello", in, out, opts...)
 	if err != nil {
@@ -42,7 +42,7 @@ func (c *xXXBBBClient) SayHello(ctx context.Context, in *HelloRequest, opts ...g
 // All implementations must embed UnimplementedXXXBBBServer
 // for forward compatibility
 type XXXBBBServer interface {
-	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
+	SayHello(context.Context, *HelloRequestt) (*HelloReply, error)
 	mustEmbedUnimplementedXXXBBBServer()
 }
 
@@ -50,7 +50,7 @@ type XXXBBBServer interface {
 type UnimplementedXXXBBBServer struct {
 }
 
-func (UnimplementedXXXBBBServer) SayHello(context.Context, *HelloRequest) (*HelloReply, error) {
+func (UnimplementedXXXBBBServer) SayHello(context.Context, *HelloRequestt) (*HelloReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
 }
 func (UnimplementedXXXBBBServer) mustEmbedUnimplementedXXXBBBServer() {}
@@ -67,7 +67,7 @@ func RegisterXXXBBBServer(s grpc.ServiceRegistrar, srv XXXBBBServer) {
 }
 
 func _XXXBBB_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HelloRequest)
+	in := new(HelloRequestt)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func _XXXBBB_SayHello_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/xxxxx.xxxx.XXXBBB/SayHello",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(XXXBBBServer).SayHello(ctx, req.(*HelloRequest))
+		return srv.(XXXBBBServer).SayHello(ctx, req.(*HelloRequestt))
 	}
 	return interceptor(ctx, in, info, handler)
 }
