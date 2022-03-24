@@ -3,7 +3,7 @@ syntax = "proto3";
 package xxxxx.xxxx;
 
 
-message HelloRequest {
+message HelloRequestt {
     string msg = 1;
 }
 
@@ -13,5 +13,5 @@ message HelloReply {
 }
 
 service XXXBBB {
-    rpc SayHello (HelloRequest) returns (HelloReply);
+    rpc SayHello (HelloRequestt) returns (HelloReply);
 }
